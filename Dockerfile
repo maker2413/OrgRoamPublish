@@ -1,12 +1,15 @@
 FROM alpine:latest
 
-WORKDIR /opt/
+RUN mkdir /opt/OrgFiles
+
+WORKDIR /opt/OrgFiles
 
 RUN apk add \
     emacs-nox \
     gcc \
-    libc-dev
+    libc-dev \
+    tree
 
-COPY publish.el .
+COPY publish.el /opt
 
-RUN emacs --batch --load publish.el
+RUN emacs --batch --load /opt/publish.el
