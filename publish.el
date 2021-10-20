@@ -31,3 +31,6 @@
 (require 'org-roam)
 
 (setq make-backup-files nil)
+
+(defun publish ()
+  (message "kerchow"))
