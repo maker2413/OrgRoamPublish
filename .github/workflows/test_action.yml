@@ -1,0 +1,16 @@
+name: Test Action
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    name: Test out action in repo
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Test Action
+        uses: ./ # Uses an action in the root directory
+        id: hello
