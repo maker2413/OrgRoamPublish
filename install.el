@@ -14,20 +14,3 @@
 
 (use-package htmlize)
 (use-package emacsql-sqlite3)
-(use-package org-roam
-  :ensure t
-  :init
-  ;; Disable v2 warning message
-  (setq org-roam-v2-ack t)
-  :custom
-  ;; Roam Notes directory
-  (org-roam-directory "/opt/OrgFiles")
-  :config
-  (org-roam-setup))
-
-(require 'ox-publish)
-(require 'ox-html)
-(require 'htmlize)
-(require 'org-roam)
-
-(setq make-backup-files nil)
