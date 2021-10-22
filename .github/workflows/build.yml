@@ -87,6 +87,7 @@ jobs:
   build-and-push-org-roam:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
+    needs: build-and-push-org
 
     steps:
       - name: Checkout Code
