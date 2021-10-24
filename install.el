@@ -7,10 +7,4 @@
 
 (package-refresh-contents)
 
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-(require 'use-package)
-(setq use-package-always-ensure t)
-
-(use-package htmlize)
-(use-package emacsql-sqlite3)
+(package-install 'htmlize)

@@ -1,5 +1,5 @@
 FROM maker2413/orgpublish:latest
 
-COPY install_roam.el .
+COPY install_roam.el publish.el .
 
 RUN emacs --batch --load install_roam.el

@@ -7,6 +7,6 @@ RUN apk add \
     gcc \
     libc-dev
 
-COPY install.el .
+COPY install.el publish.el ./
 
 RUN emacs --batch --load install.el
