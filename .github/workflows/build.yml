@@ -11,11 +11,10 @@ on:
       - v*
 
 env:
-  IMAGE_NAME: OrgPublish
-  ROAM_IMAGE_NAME: OrgRoamPublish
+  IMAGE_NAME: OrgRoamPublish
 
 jobs:
-  build-and-push-org:
+  build-and-push:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
@@ -83,73 +82,3 @@ jobs:
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
-
-  build-and-push-org-roam:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-    needs: build-and-push-org
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-
-      - name: Build $ROAM_IMAGE_NAME
-        run: |
-          # Change all uppercase to lowercase
-          ROAM_IMAGE_NAME=$(echo $ROAM_IMAGE_NAME | tr '[A-Z]' '[a-z]')
-
-          # Build Docker container
-          docker build . --file Dockerfile.roam --tag $ROAM_IMAGE_NAME
-
-      - name: Log Into Registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-
-      - name: Push Image To GitHub Packages
-        run: |
-          ROAM_IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$ROAM_IMAGE_NAME
-
-          # Change all uppercase to lowercase
-          ROAM_IMAGE_ID=$(echo $ROAM_IMAGE_ID | tr '[A-Z]' '[a-z]')
-
-          # Strip git ref prefix from version
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-
-          # Strip "v" prefix from tag name
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-
-          # Use Docker `latest` tag convention
-          [ "$VERSION" == "master" ] && VERSION=latest
-
-          echo ROAM_IMAGE_ID=$ROAM_IMAGE_ID
-          echo VERSION=$VERSION
-
-          # Change all uppercase to lowercase
-          ROAM_IMAGE_NAME=$(echo $ROAM_IMAGE_NAME | tr '[A-Z]' '[a-z]')
-
-          docker tag $ROAM_IMAGE_NAME $ROAM_IMAGE_ID:$VERSION
-          docker push $ROAM_IMAGE_ID:$VERSION
-
-      - name: Log Into Docker Hub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Push Image To Docker Hub
-        run: |
-          ROAM_IMAGE_ID=${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME
-
-          # Change all uppercase to lowercase
-          ROAM_IMAGE_ID=$(echo $ROAM_IMAGE_ID | tr '[A-Z]' '[a-z]')
-
-          # Strip git ref prefix from version
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-
-          # Strip "v" prefix from tag name
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-
-          # Use Docker `latest` tag convention
-          [ "$VERSION" == "master" ] && VERSION=latest
-
-          # Change all uppercase to lowercase
-          ROAM_IMAGE_NAME=$(echo $ROAM_IMAGE_NAME | tr '[A-Z]' '[a-z]')
-
-          docker tag $ROAM_IMAGE_NAME $ROAM_IMAGE_ID:$VERSION
-          docker push $ROAM_IMAGE_ID:$VERSION
