@@ -23,7 +23,7 @@
        (list "org-files"
              :recursive t
              :base-directory "/opt/OrgFiles"
-             :exclude "(Project/*|RoamTemplates/*)"
+             :exclude ".*[Tt]emplates/.*\\|.*[Pp]rojects/.*\\|.*[Dd]ailies/.*"
              :publishing-directory "/opt/OrgFiles/web-site"
              :publishing-function 'org-html-publish-to-html)))
 
