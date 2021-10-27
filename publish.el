@@ -27,7 +27,7 @@
              :html-validation-link nil             ;; Dont show validation link
              :publishing-directory "/opt/OrgFiles/web-site"
              :publishing-function 'org-html-publish-to-html
-             :section-numbers                      ;; Don't show section numbers
+             :section-numbers nil                  ;; Don't show section numbers
              :with-author nil)))                   ;; Don't show author
 
 ;; Generate the site output
