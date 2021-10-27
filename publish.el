@@ -24,10 +24,11 @@
              :recursive t
              :base-directory "/opt/OrgFiles"
              :exclude ".*[Tt]emplates/.*\\|.*[Pp]rojects/.*\\|.*[Dd]ailies/.*"
-             :html-validation-link nil              ;; Dont show validation link
+             :html-validation-link nil             ;; Dont show validation link
              :publishing-directory "/opt/OrgFiles/web-site"
              :publishing-function 'org-html-publish-to-html
-             :with-author nil)))                    ;; Don't show author
+             :section-numbers                      ;; Don't show section numbers
+             :with-author nil)))                   ;; Don't show author
 
 ;; Generate the site output
 (org-publish-all t)
