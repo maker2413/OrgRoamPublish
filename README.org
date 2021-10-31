@@ -1,2 +1,12 @@
 #+TITLE: OrgRoamPublish
 
+This repo is built off of the [[https://github.com/maker2413/OrgPublish][OrgPublish]] image I also made. This repo just adds
+the library files required to install org-roam to the OrgPublish image and then
+also installs the org-roam package. The publish.el files has also been updated
+to incorporate org-roam to the publish function.
+
+* Running
+  To run this docker image to publish your org-roam files to html you just have
+  to run the following command:
+
+  ~docker run -v <org-roam directory>:/opt/OrgFiles maker2413/OrgRoamPublish~
