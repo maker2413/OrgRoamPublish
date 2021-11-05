@@ -10,6 +10,6 @@ COPY install.el publish.el /opt/
 
 RUN emacs --batch --load /opt/install.el
 
-ENTRYPOINT ["emacs", "-Q", "--script"]
+ENTRYPOINT ["emacs", "-Q", "--load", "/opt/install.el", "--script"]
 
 CMD ["/opt/publish.el"]
