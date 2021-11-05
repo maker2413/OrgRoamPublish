@@ -29,7 +29,7 @@ to incorporate org-roam to the publish function.
         - name: Checkout
           uses: actions/checkout@v2
 
-        - name: Deploy to cluster
+        - name: Publish Org Files
           uses: maker2413/OrgRoamPublish@v1.0.0
   #+end_src
 
