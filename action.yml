@@ -15,7 +15,10 @@ runs:
     - name: Pull Image
       run: |
         docker pull maker2413/orgroampublish:latest
+      shell: bash
+
     - name: Run Container
       run: |
         docker run --rm -v $(pwd):/opt/OrgFiles maker2413/orgroampublish:latest \
         ${{ inputs.publish_script }}
+      shell: bash
