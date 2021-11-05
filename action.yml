@@ -1,0 +1,9 @@
+name: 'Org Roam Publish'
+description: 'Publish Org Roam Database to HTML'
+author: 'Maker2413 <maker2413@gmail.com>'
+branding:
+  icon: 'file-plus'
+  color: 'purple'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

@@ -6,10 +6,10 @@ RUN apk add \
 
 RUN rm -rf /opt/*
 
-COPY install.el publish.el ./
+COPY install.el publish.el /opt/
 
-RUN emacs --batch --load install.el
+RUN emacs --batch --load /opt/install.el
 
 ENTRYPOINT ["emacs", "-Q", "--script"]
 
-CMD ["publish.el"]
+CMD ["/opt/publish.el"]

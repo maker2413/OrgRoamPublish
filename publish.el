@@ -25,7 +25,7 @@
              :base-directory "/opt/OrgFiles"
              :exclude ".*[Tt]emplates/.*\\|.*[Pp]rojects/.*\\|.*[Dd]ailies/.*"
              :html-validation-link nil             ;; Dont show validation link
-             :publishing-directory "/opt/OrgFiles/web-site"
+             :publishing-directory "/opt/OrgFiles/html-output"
              :publishing-function 'org-html-publish-to-html
              :section-numbers nil                  ;; Don't show section numbers
              :with-author nil)))                   ;; Don't show author
