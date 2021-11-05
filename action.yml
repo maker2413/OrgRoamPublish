@@ -1,9 +1,21 @@
-name: 'Org Roam Publish'
-description: 'Publish Org Roam Database to HTML'
-author: 'Maker2413 <maker2413@gmail.com>'
+name: "Org Roam Publish"
+description: "Publish Org Roam Database to HTML"
+author: "Maker2413 <maker2413@gmail.com>"
 branding:
-  icon: 'file-plus'
-  color: 'purple'
+  icon: "file-plus"
+  color: "purple"
+inputs:
+  publish_script:
+    default: "/opt/publish.el"
+    required: false
+    description: "elisp script to use for publishing"
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "composite"
+  steps:
+    - name: Pull Image
+      run: |
+        docker pull maker2413/orgroampublish:latest
+    - name: Run Container
+      run: |
+        docker run --rm -v $(pwd):/opt/OrgFiles maker2413/orgroampublish:latest \
+        ${{ inputs.publish_script }}
