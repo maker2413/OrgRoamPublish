@@ -1,5 +1,5 @@
 name: "Org Roam Publish"
-description: "Publish Org Roam Database to HTML"
+description: "Publish Org Roam Nodes to HTML"
 author: "Maker2413 <maker2413@gmail.com>"
 branding:
   icon: "file-plus"
