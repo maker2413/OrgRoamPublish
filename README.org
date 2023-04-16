@@ -2,7 +2,7 @@
 
 This repo provides a GitHub action to allow you to publish org-roam files to
 html files. I use this action to publish my org-roam notes to my website:
-https://www.ethanp.dev/.
+https://notes.ethancpost.com.
 
 This repo is built off of the [[https://github.com/maker2413/OrgPublish][OrgPublish]] image I also made. This repo just adds
 the library files required to install org-roam to the OrgPublish image and then
